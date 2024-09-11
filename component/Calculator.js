@@ -1,7 +1,6 @@
-import { Entypo } from "@expo/vector-icons";
+import Entypo from "react-native-vector-icons/Entypo";
 import { useState } from "react"
 import { BackHandler, StyleSheet, Text, TouchableOpacity, Vibration, View } from "react-native";
-import { Item } from "react-native-paper/lib/typescript/components/Drawer/Drawer";
 
 const Calculator =() =>{
     const [darkMode, setDarkMode] = useState(false);
@@ -46,21 +45,21 @@ const Calculator =() =>{
                     setCurrentNumber(currentNumber +buttonPress);
                     break;
                 case 'DEL':
-                    //Vibration.vibrate(35);
+                    Vibration.vibrate(35);
                     setCurrentNumber(currentNumber.substring(0, (currentNumber.length-1)));
                     break;
                 case 'C':
-                    //Vibration.vibrate(35);
+                    Vibration.vibrate(35);
                     setCurrentNumber("")
                     setlastNumber("")
                     break;
                 case '=':
-                    //Vibration.vibrate(35);
+                    Vibration.vibrate(35);
                     setCurrentNumber(currentNumber+"=")
                     calculator()
                     break;
                 default: // cacs button con lai 0-9 va .
-                    //Vibration.vibrate(35);
+                    Vibration.vibrate(35);
                     setCurrentNumber(currentNumber+ buttonPress)
                     break;
             }
@@ -71,10 +70,12 @@ return (
         {/* Thiết kế giao diện view containerResult */}
         <View style={{...myStyles.containerResult, backgroundColor:bgColorResult}}>
             <TouchableOpacity
-                style={{...myStyles.bgColorThemeButton,backgroundColor:bgColorThemeButton}}
+                style={{...myStyles.themeButton,backgroundColor:bgColorThemeButton}}
                 onPress={()=> setDarkMode(!darkMode)}
             >
-                {/* <Entypo name={(darkMode)?"light-up":"moon"} size={40} style={{color: colorIcon}}/> */}
+
+            <Entypo name={(darkMode)?"light-up":"moon"} size={40} style={{color: colorIcon}}/> 
+
             </TouchableOpacity>
             <Text style={{...myStyles.historyText,color: textColorHistory}}>{lastNumber}</Text>
             <Text style={myStyles.resultText}>{currentNumber}</Text>
